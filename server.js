@@ -3,8 +3,8 @@ const path = require('path')
 
 
 
-var Rollbar = require('rollbar')
-var rollbar = new Rollbar({
+let Rollbar = require('rollbar')
+let rollbar = new Rollbar({
   accessToken: '37b78893b10440aea51b5486a492c7b6',
   captureUncaught: true,
   captureUnhandledRejections: true,
@@ -18,7 +18,7 @@ const app = express()
 rollbar.log('Hello world!')
 
 
-
+app.use(express.json())
 app.use(rollbar.errorHandler())
 
 const port = process.env.PORT || 4545
